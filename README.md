@@ -46,10 +46,22 @@ The game's own title screen still uses an AI-looking classroom background
 ## Preview
 Open index.html in a browser. Everything uses relative paths.
 
-## Deploy (GitHub Pages + custom domain)
-1. Push this folder to a GitHub repo, enable Pages on the main branch.
-2. Buy hoseungkwack.com, add a CNAME file containing `hoseungkwack.com`.
-3. Point the domain's DNS at GitHub Pages, then turn on "Enforce HTTPS".
+## Deploy
 
-IntoTheShadow is in development. It is NOT confirmed for a 2027 Steam release:
-say "in development", with Level Up in April 2027 as the first public milestone.
+Live at https://hoseungdev0914.github.io (GitHub Pages, `main` branch, root).
+Pushing to `main` redeploys; the build takes a minute or two.
+
+The working copy lives at C:\Dev\hoseungkwack-site on the Windows machine and
+is NOT the same checkout as this repo, so changes have to be copied across.
+That local folder also keeps pit-of-hell.html and a few unused images that are
+deliberately left out of this repo.
+
+### Custom domain, when hoseungkwack.com is bought
+1. Settings > Pages > Custom domain: enter hoseungkwack.com, Save.
+   That writes a CNAME file to this repo.
+2. At the registrar, point the apex A records at GitHub:
+   185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+   and a CNAME for www -> hoseungdev0914.github.io
+3. Wait for the DNS check to pass, then tick "Enforce HTTPS".
+
+The github.io address keeps working and redirects after that.
