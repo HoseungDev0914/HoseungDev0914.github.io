@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One system, not three | Cents for Sense | Hoseung Kwack</title>
+<meta name="description" content="How four separately built screens in Cents for Sense became one interface.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a href="../index.html" class="brand">Hoseung Kwack<span class="brand-role">Game Designer</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../index.html#work">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn">Resume</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="wrap">
+    <div class="inner-narrow cs-head">
+      <p class="kicker">Cents for Sense &nbsp;·&nbsp; Systems and UI</p>
+      <h1 class="cs-h">One system, not three</h1>
+      <p class="cs-sub">Four scenes built one at a time, and the work of making them feel like one game.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cs-media">
+      <img src="../img/cfs-morning-event.jpg" alt="Morning event screen: the broker's briefing, a food and recovery slot, and a confirm button inside a green CRT panel" width="765" height="432">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="inner-narrow">
+
+      <dl class="sum">
+        <div>
+          <dt>Problem</dt>
+          <dd>Each scene in the day loop was built on its own, so panels, grids and the way actions confirmed all drifted apart. It stopped feeling like one game.</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Planning and design with my teammate, the UI and interactions outside the side-scrolling levels, data that carries between scenes, and the pixel art.</dd>
+        </div>
+        <div>
+          <dt>What I built</dt>
+          <dd>One shared interface: one panel and CRT setup, one interaction layer, one click sound and one wallet, used by every screen.</dd>
+        </div>
+        <div>
+          <dt>What changed</dt>
+          <dd>The morning event, sense subscription and trade now read as one interface instead of three. The demo won Best Use of Theme.</dd>
+        </div>
+      </dl>
+
+      <p class="meta">
+        <span><b>Role</b>Design, UI, pixel art</span>
+        <span><b>Tools</b>Unity 6, Aseprite</span>
+        <span><b>Team</b>2</span>
+        <span>2-week jam, 2026</span>
+      </p>
+
+      <section class="sec">
+        <p class="lbl">Context</p>
+        <h2 class="h2">Your senses are a subscription</h2>
+        <p class="body">We made this for the YOU CAN PLAY THIS GAME JAM, hosted by Noodle Goose Games, where the theme was accessibility. We took it literally. A corporation sells sight, sound, smell, taste and touch as a daily subscription, and you have seven days and very few cents to survive until your ship leaves.</p>
+        <p class="body">Each sense has tiers, and a tier changes the quality of what you perceive rather than switching it on or off. You start with 26 cents and tiers cost 2, 7 and 12, so you cannot keep everything.</p>
+        <p class="body">A day runs morning event, sense subscription, scavenging, trade. Every one of those choices goes through a screen, and what you choose there decides whether you survive. If one screen feels foreign, the player stops trusting all of them.</p>
+        <figure class="fig">
+          <img src="../img/cfs-level-lighting.jpg" alt="Platform level where the light around the player depends on the sight subscription" width="582" height="328" loading="lazy">
+          <figcaption>In the levels, the sight tier decides how much of the room you can see.</figcaption>
+        </figure>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Process</p>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">01</span>Finding it by playing, not imagining</h2>
+          <p class="body">I played the finished build start to finish and flagged every spot that felt off or strangely different from the screen before it. The pattern was clear once it was all in one run: each screen had its own panel style, its own grid and its own way of confirming an action.</p>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">02</span>Reuse, don't restyle</h2>
+          <p class="body">The easy fix was to repaint each screen until they matched. I went the other way. I took the morning event's panel and CRT codec setup as the template and rebuilt trade and sense subscription from the same parts, so they are the same components rather than three look-alikes.</p>
+          <figure class="fig">
+            <div class="shots">
+              <img src="../img/cfs-morning-event.jpg" alt="Morning event screen" width="765" height="432" loading="lazy">
+              <img src="../img/cfs-sense-subscription.jpg" alt="Sense subscription screen with a card and tier selector for each of the five senses" width="766" height="432" loading="lazy">
+              <img src="../img/cfs-trade-broker.jpg" alt="Trade screen with the broker's inventory between two portraits" width="740" height="413" loading="lazy">
+            </div>
+            <figcaption>Morning event, sense subscription and trade, built from the same panel, grid and type.</figcaption>
+          </figure>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">03</span>Same behaviour, not just looks</h2>
+          <p class="body">Matching panels only goes so far if each screen still acts differently. The interaction layer, the click sound and the wallet are shared across every scene, so spending a cent or moving an item feels the same wherever you are. The same trade interface handles buying from NPCs and taking items from containers in the levels, with only the portrait and the currency rule changing.</p>
+          <p class="body">Playing it also showed that the inventory felt unresponsive. My first version left a picked-up item on the grid until you confirmed, so you could not tell the pickup had worked. I rebuilt it so the item leaves the slot the moment you grab it.</p>
+        </div>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Outcome</p>
+        <h2 class="h2">One interface, and Best Use of Theme</h2>
+        <p class="body">The demo shipped as a WebGL build on itch.io and won Best Use of Theme. Put together, the morning event, sense subscription and trade read as one interface: same panels, same feedback, same feel everywhere.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">What I'd change</p>
+        <p class="body">The jam's accessibility mentors pointed out something we had missed. The theme was about access, but the controls were not: holding Space to interact and dragging items both ask a lot of the player's hands. The plan after the demo is click to pick up and place instead of dragging, a hold or tap toggle, remappable controls, audio cues for every action, and colour cues that always come with a label.</p>
+        <ul class="facts">
+          <li><b>Find problems by playing, not imagining.</b> The inconsistency only showed up in a full run.</li>
+          <li><b>Unify with one system, not restyling.</b> Shared parts stay consistent when screens change.</li>
+          <li><b>Consistency is what earns trust.</b> When every choice goes through the UI, the UI is the game.</li>
+        </ul>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Materials</p>
+        <div class="mats">
+          <a href="https://hoseung-kwack.itch.io/cents-for-sense" class="mat">Play on itch.io →</a>
+          <a href="https://www.youtube.com/watch?v=CfD5fOcydkQ" class="mat">Gameplay video</a>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="Case studies">
+        <a href="../index.html#work">← All work</a>
+        <a href="the-answer-is-7.html">Next: The Answer is 7! →</a>
+      </nav>
+
+    </div>
+  </div>
+
+</main>
+
+<footer id="about" class="site-foot" style="margin-top: 0">
+  <svg viewBox="0 0 1280 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#0E0E0E" d="M0,60 L0,34 C90,30 150,22 230,26 C300,30 330,38 400,34 C470,30 500,18 560,20 C600,22 612,10 620,4 C626,0 634,3 634,10 C634,20 660,26 720,28 C800,30 860,24 940,27 C1010,30 1060,36 1130,32 C1190,28 1240,30 1280,33 L1280,60 Z"/></svg>
+  <div class="foot">
+    <div>
+      <h2>Let's talk</h2>
+      <p>Fourth-year Game Design at Sheridan College, Oakville. Looking for a design role starting 2027.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/hoseung-kwack/">LinkedIn</a>
+      <a href="https://hoseung-kwack.itch.io/">itch.io</a>
+      <a href="mailto:hoseungkwack@gmail.com">Email</a>
+      <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn btn-light">Resume</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

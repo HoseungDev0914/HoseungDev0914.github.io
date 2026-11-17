@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IntoTheShadow | Hoseung Kwack</title>
+<meta name="description" content="IntoTheShadow, a 2D combat platformer in development. Audio, animation, VFX and UI by Hoseung Kwack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a href="../index.html" class="brand">Hoseung Kwack<span class="brand-role">Game Designer</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../index.html#work">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn">Resume</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="wrap">
+    <div class="inner-narrow cs-head">
+      <p class="kicker">Capstone &nbsp;·&nbsp; Three Wheeling Whiteboards, 5 people &nbsp;·&nbsp; In development</p>
+      <h1 class="cs-h">IntoTheShadow</h1>
+      <p class="cs-sub">A 2D combat platformer where moving in and out of shadow decides what can kill you. I work across audio, animation, VFX and UI on it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cs-media">
+      <img src="../img/its-character-wide.jpg" alt="The IntoTheShadow player character, an ink silhouette with blue edge light" width="1400" height="680">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="inner-narrow">
+
+      <dl class="sum">
+        <div>
+          <dt>The game</dt>
+          <dd>You are the remaining soul of someone who was killed, a living shadow, going back for everyone responsible. Moving through shadow is both how you survive and how you attack.</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Audio design and composition, character animation and Spine rigging, VFX, UI design and art, and the systems design behind them. I also handle branch integration for the team's Unity project.</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>Three Wheeling Whiteboards, five people, fourth-year capstone at Sheridan College, 2026 to 2027.</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd>In development. The team is building toward a Steam release, with the Level Up showcase in April 2027 as the first public milestone. Nothing here is a shipped product yet.</dd>
+        </div>
+      </dl>
+
+      <p class="meta">
+        <span><b>Tools</b>Unity, C#, Spine, FMOD Studio, REAPER, Git</span>
+        <span><b>Team</b>5</span>
+        <span>2026–27</span>
+      </p>
+
+      <section class="sec">
+        <p class="lbl">Context</p>
+        <h2 class="h2">One rule the whole game is built on</h2>
+        <p class="body">Shadow is not cover, it is a second state. In shadow the player is intangible and fast and cannot attack; out of shadow they can attack and can be killed. Every ability is a way of crossing that line: flattening into a wall and slipping out behind an enemy, diving into a shadow, dropping out of a light overhead, dissolving and reforming somewhere else. Shadow abilities drain an energy bar, and when it runs out the player is forced back into the exposed state.</p>
+        <p class="body">That rule is what makes my parts of the project connected rather than separate jobs. The player is two Spine skeletons because they are two states. The music resets on death because death is the only thing that undoes progress. The dash trail shows how far you actually moved because the whole game is about judging distance to the next patch of dark.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">My work</p>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">01</span>Adaptive music that never restarts</h2>
+          <p class="body">The music used to restart from the top every time the player died, so the worst moment in a run always sounded the same. I rebuilt it as one continuous take with four layers that open on kills and collapse on death, running in FMOD. Dying now costs the layers you earned instead of the song.</p>
+          <p class="body">I composed the track, designed the layer system and wired it into the build.</p>
+          <div class="mats" style="margin-top: 20px">
+            <a href="its-adaptive-music.html" class="mat">Read the full case study &rarr;</a>
+          </div>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">02</span>Two characters, because there are two states</h2>
+          <p class="body">The player is built as two separate Spine skeletons, Shadow-In and Shadow-Out, rather than one rig with a costume change. They share a silhouette but not a vocabulary: dash belongs to Shadow-In, attack belongs to Shadow-Out, and the states need to read differently the moment the player crosses between them.</p>
+          <p class="body">Rigging started by taking the character apart. The art arrived as a rough pass on one flattened layer, so I split it into named body-part layers before any bone existed.</p>
+          <figure class="fig">
+            <img src="../img/its-layer-split.jpg" alt="Before and after: a flattened character illustration on the left, the same character split into named body-part layers for Spine on the right" width="1200" height="657" loading="lazy">
+            <figcaption>Splitting the art into named parts is what decides which movements the rig can have later.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="../img/its-rig-wide.jpg" alt="The finished Spine rig: bones laid over the ink silhouette, with the full bone hierarchy beside it" width="1400" height="859" loading="lazy">
+            <figcaption>The finished rig. Hair alone accounts for most of the hierarchy.</figcaption>
+          </figure>
+          <p class="body">Hair is the part that carries the ink look. Each of the four front strands is three bones with three trailing ghost copies at 1.14, 1.28 and 1.44 times the thickness, all on physics, so the silhouette keeps bleeding after the body stops. A hair wiggle runs on its own animation track at all times and speeds up 2.5 times during a dash, so the character is never completely still.</p>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">03</span>Making the shadow state read as fast</h2>
+          <p class="body">Both states drifted at first. The character floats, which fits the concept, but in a run cycle it meant the silhouette barely changed over two and a half seconds. Nothing about the movement told the player they were going fast, so the fast state did not feel fast.</p>
+          <p class="body">I rebuilt Shadow-In as a grounded run, six poses over 0.8 seconds, where the silhouette changes every frame. Shadow-Out kept drifting on purpose: it is the exposed, vulnerable state, and the contrast between them is now doing work the UI does not have to.</p>
+          <figure class="fig">
+            <img src="../img/its-anim-before-after.jpg" alt="Before: three Shadow-In frames 2.5 seconds apart that barely differ. After: six frames of a grounded run cycle. Shadow-Out unchanged, still drifting." width="1400" height="824" loading="lazy">
+            <figcaption>Before, after, and the state I deliberately left alone.</figcaption>
+          </figure>
+          <p class="body todo">[Full case study in progress]</p>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">04</span>VFX, and what a trail is allowed to say</h2>
+          <p class="body">VFX is mine on this project, including the ink textures the effects are built from, which I make rather than source. The rule I work to is that an effect has to report something true. The dash trail shows exactly the distance covered during the dash and stops there, rather than following the character through the inertia afterwards, because its job is to teach the player how far a dash actually carries them before they have to commit to one.</p>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">05</span>UI, and keeping five people's work mergeable</h2>
+          <p class="body">I design and draw the UI, and I handle branch integration for the team's Unity project, which on a five-person capstone is a design job as much as a Git one. Deciding what gets merged and when is how the build stays playable in a week where everyone is changing the same scenes.</p>
+        </div>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Materials</p>
+        <!-- TODO: gameplay video, Steam page once it exists -->
+        <div class="mats">
+          <a href="its-adaptive-music.html" class="mat">Adaptive music case study &rarr;</a>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="Case studies">
+        <a href="../index.html#work">← All work</a>
+        <a href="cents-for-sense.html">Next: Cents for Sense →</a>
+      </nav>
+
+    </div>
+  </div>
+
+</main>
+
+<footer id="about" class="site-foot" style="margin-top: 0">
+  <svg viewBox="0 0 1280 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#0E0E0E" d="M0,60 L0,34 C90,30 150,22 230,26 C300,30 330,38 400,34 C470,30 500,18 560,20 C600,22 612,10 620,4 C626,0 634,3 634,10 C634,20 660,26 720,28 C800,30 860,24 940,27 C1010,30 1060,36 1130,32 C1190,28 1240,30 1280,33 L1280,60 Z"/></svg>
+  <div class="foot">
+    <div>
+      <h2>Let's talk</h2>
+      <p>Fourth-year Game Design at Sheridan College, Oakville. Looking for a design role starting 2027.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/hoseung-kwack/">LinkedIn</a>
+      <a href="https://hoseung-kwack.itch.io/">itch.io</a>
+      <a href="mailto:hoseungkwack@gmail.com">Email</a>
+      <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn btn-light">Resume</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

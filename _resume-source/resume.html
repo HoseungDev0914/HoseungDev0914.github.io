@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hoseung Kwack — Game Designer</title>
+<style>
+@font-face {
+  font-family: 'Archivo';
+  src: url('archivo.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  color: #1A1A1A;
+  background: #fff;
+  font-size: 9.1pt;
+  line-height: 1.37;
+  -webkit-font-smoothing: antialiased;
+}
+.page { width: 8.5in; min-height: 11in; padding: 0.40in 0.58in 0.26in; }
+
+/* header */
+.head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.name { font-size: 23pt; font-weight: 800; letter-spacing: -0.015em; line-height: 1; margin: 0; }
+.role { margin: 7px 0 0; font-size: 10pt; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: #4A4A4A; }
+.contact { text-align: right; font-size: 8.7pt; line-height: 1.62; color: #2B2B2B; padding-top: 3px; white-space: nowrap; }
+.contact a { color: #2B2B2B; text-decoration: none; }
+
+/* sections */
+h2 {
+  margin: 11.5px 0 0; padding-bottom: 2.5px;
+  font-size: 9.4pt; font-weight: 700; letter-spacing: 0.17em; text-transform: uppercase;
+  border-bottom: 1.1px solid #1A1A1A;
+}
+.sec { margin-top: 6px; }
+p { margin: 0; }
+
+/* tools */
+.tools { margin-top: 6px; display: grid; grid-template-columns: 1.42in 1fr; row-gap: 3.5px; column-gap: 10px; }
+.tools dt { font-weight: 700; }
+.tools dd { margin: 0; }
+
+/* education */
+.edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 6px; }
+.edu-row b { font-size: 10.2pt; }
+.edu-sub { color: #4A4A4A; }
+.when { color: #4A4A4A; white-space: nowrap; }
+
+/* projects */
+.proj { margin-top: 7px; break-inside: avoid; }
+.proj:first-of-type { margin-top: 6px; }
+.proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.proj-title { font-size: 10.2pt; font-weight: 700; }
+.proj-meta { margin: 1.5px 0 3px; color: #4A4A4A; font-size: 8.8pt; }
+.proj-meta a { color: #4A4A4A; text-decoration: none; }
+ul { margin: 0; padding-left: 14px; }
+li { margin-bottom: 1.6px; }
+li::marker { color: #6A6A6A; }
+b.k { font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="head">
+    <div>
+      <h1 class="name">HOSEUNG KWACK</h1>
+      <p class="role">Game Designer</p>
+    </div>
+    <div class="contact">
+      Mississauga, ON<br>
+      hoseungkwack@gmail.com<br>
+      647-894-1430<br>
+      <a href="https://hoseung-kwack.itch.io">hoseung-kwack.itch.io</a><br>
+      <a href="https://www.linkedin.com/in/hoseung-kwack">linkedin.com/in/hoseung-kwack</a>
+    </div>
+  </header>
+
+  <h2>Profile</h2>
+  <div class="sec">
+    <p>Fourth-year Game Design student at Sheridan College who designs across systems, UI, narrative and audio, and implements what he designs. Takes an idea to a playable build before deciding whether it works, and hands a design to each discipline in a form they can act on. Currently leads the audio, animation, VFX and UI on a five-person capstone. Looking for a game design role starting 2027.</p>
+  </div>
+
+  <h2>Tools</h2>
+  <dl class="tools">
+    <dt>Engine &amp; Code</dt><dd>Unity, C#, Git</dd>
+    <dt>Audio</dt><dd>FMOD Studio, REAPER</dd>
+    <dt>2D Art &amp; Animation</dt><dd>Aseprite, Spine</dd>
+    <dt>Narrative &amp; Planning</dt><dd>Twine, Celtx, Miro</dd>
+  </dl>
+
+  <h2>Education</h2>
+  <div class="edu-row">
+    <div>
+      <b>Honours Bachelor of Game Design</b><br>
+      <span class="edu-sub">Sheridan College | Oakville, ON</span>
+    </div>
+    <span class="when">Apr 2027</span>
+  </div>
+  <p class="edu-sub" style="margin-top:3px">Additional Certificate in Creativity and Creative Problem Solving (in progress)</p>
+
+  <h2>Projects</h2>
+
+  <div class="proj">
+    <div class="proj-top">
+      <span class="proj-title">Audio, Animation &amp; VFX, IntoTheShadow — Capstone</span>
+      <span class="when">Sep 2026 – Present</span>
+    </div>
+    <p class="proj-meta">2D combat platformer, Unity · Three Wheeling Whiteboards, 5 people · In development, targeting Steam</p>
+    <ul>
+      <li><b class="k">Composed the soundtrack and built the adaptive music system in FMOD</b>, where four layers open on kills and collapse on death over one continuous take, so dying costs the progress earned instead of restarting the song</li>
+      <li><b class="k">Rigged and animated the player in Spine as two separate skeletons</b> for the in-shadow and out-of-shadow states, and rebuilt the in-shadow run as a grounded six-pose cycle so the fast state reads as fast</li>
+      <li><b class="k">Own all VFX</b>, including the hand-made ink textures the effects are built from, with trails scoped to report real distance travelled so players can judge a dash before committing</li>
+      <li>Design and draw the UI, and handle branch integration that keeps a five-person Unity project mergeable and playable each week</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-top">
+      <span class="proj-title">Design, UI &amp; Pixel Art, Cents for Sense</span>
+      <span class="when">May 2026 – Jun 2026</span>
+    </div>
+    <p class="proj-meta">Unity 6, WebGL · Team of 2 · Best Use of Theme, YOU CAN PLAY THIS GAME JAM · <a href="https://hoseung-kwack.itch.io/cents-for-sense">hoseung-kwack.itch.io/cents-for-sense</a></p>
+    <ul>
+      <li><b class="k">Designed the sense economy</b> around tiers that change the quality of what the player perceives rather than switching a sense on or off, which turned the jam's accessibility theme into the game's central decision</li>
+      <li><b class="k">Rebuilt three separately built screens on one shared interface</b>, with a single interaction layer, click sound and wallet, so scenes made one at a time read as a single game</li>
+      <li>Led planning and design with one teammate, and owned the UI, scene-to-scene data and pixel art outside the side-scrolling levels</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-top">
+      <span class="proj-title">Art, UI &amp; Design Lead, The Answer is 7!</span>
+      <span class="when">May 2026</span>
+    </div>
+    <p class="proj-meta">Unity 6, WebGL · Team of 3 · 48-hour jam, Sheridan Warm-up Game Jam · <a href="https://hoseung-kwack.itch.io/the-answer-is-7">hoseung-kwack.itch.io/the-answer-is-7</a></p>
+    <ul>
+      <li><b class="k">Designed a one-button control scheme where timing carries the second action</b>: a tap moves the cursor, a half-second hold writes a 7 into the slot</li>
+      <li><b class="k">Made the input threshold visible</b> with a pencil gauge that fills while the key is held, so players learn both actions by trying them instead of reading a tutorial</li>
+      <li>Set the jam scope, wrote the design document, and returned after the jam to release 1.0 with 30 puzzles, rebalanced audio and a crash fix</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-top">
+      <span class="proj-title">Narrative Designer, Sisyphus's Rock</span>
+      <span class="when">Oct 2024 – Dec 2024</span>
+    </div>
+    <p class="proj-meta">Twine, Celtx · Solo · <a href="https://hoseung-kwack.itch.io/sisyphus">hoseung-kwack.itch.io/sisyphus</a></p>
+    <ul>
+      <li><b class="k">Wrote and built a seven-act branching narrative with eleven endings</b>, scripted as a 59-page screenplay in Celtx before any passage was built in Twine</li>
+      <li>Structured each act around a figure from Greek myth facing a modern problem of the same shape, with the player advising and the character choosing, so consequences land on both</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

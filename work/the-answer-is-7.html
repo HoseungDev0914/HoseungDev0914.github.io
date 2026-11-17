@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One key, two inputs | The Answer is 7! | Hoseung Kwack</title>
+<meta name="description" content="A notebook puzzle game where the only key is 7. Tap to move, hold to write.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a href="../index.html" class="brand">Hoseung Kwack<span class="brand-role">Game Designer</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../index.html#work">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn">Resume</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="wrap">
+    <div class="inner-narrow cs-head">
+      <p class="kicker">The Answer is 7! &nbsp;·&nbsp; Art, UI and design</p>
+      <h1 class="cs-h">One key, two inputs</h1>
+      <p class="cs-sub">A notebook puzzle game where the only key you can press is 7.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cs-media">
+      <img src="../img/ta7-puzzle.jpg" alt="The notebook puzzle screen: grid paper on a wooden desk, the equation 7 + 3 = 0 with the first slot outlined, and the pencil gauge standing at the right edge" width="1200" height="676">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="inner-narrow">
+
+      <dl class="sum">
+        <div>
+          <dt>Problem</dt>
+          <dd>With a single button, the player has to learn two actions from the same key, moving and writing, without a tutorial getting in the way.</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Art, UI and design lead. Visual assets, UI, scene composition, the design document and the itch.io build.</dd>
+        </div>
+        <div>
+          <dt>What I built</dt>
+          <dd>A hand-drawn notebook interface where a pencil gauge fills as you hold 7, so the difference between a tap and a hold is something you can see.</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>16 hours over two days. Timers, punishment and menus were cut so the core hold stayed readable.</dd>
+        </div>
+      </dl>
+
+      <p class="meta">
+        <span><b>Role</b>Art, UI, design</span>
+        <span><b>Tools</b>Unity 6, Aseprite</span>
+        <span><b>Team</b>3</span>
+        <span>48-hour jam, 2026</span>
+      </p>
+
+      <section class="sec">
+        <p class="lbl">Context</p>
+        <h2 class="h2">Build meaningful play out of one button</h2>
+        <p class="body">That was the brief for the Sheridan Warm-up Game Jam in May 2026. Our answer was an equation puzzle where 7 is the only key. You make each statement true by writing 7s into it, and the solution that uses the fewest 7s is the one that counts. Later puzzles ask you to write a 7 over the = sign itself. The released version runs 30 puzzles.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Process</p>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">01</span>Timing is the second button</h2>
+          <p class="body">One key only gives you one action unless time does the rest. A press under half a second moves the cursor to the next slot. Holding for half a second or longer writes a 7 into the selected slot. When and how long you press became the whole control scheme.</p>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">02</span>Making the hold visible</h2>
+          <p class="body">A half-second threshold is easy to miss if you cannot see it. I drew the gauge as a pencil whose body fills with graphite from the bottom up while you hold 7, then stays full for a moment before resetting. The selected slot gets a hand-drawn pencil outline, and a pencil pointer taps on a short press and shakes while you hold, so both inputs answer back the moment you use them.</p>
+          <p class="body">Every input sound was planned as pencil on paper to match, and there is no fail state. A wrong answer simply does not advance, and a left click resets the puzzle, so players learn the two inputs by trying them.</p>
+          <figure class="fig">
+            <div class="shots shots-2">
+              <img src="../img/ta7-before.jpg" alt="The first puzzle before any input: 4 + 3 = 0, with a pencil outline around the 4" width="760" height="428" loading="lazy">
+              <img src="../img/ta7-after.jpg" alt="The same puzzle after holding 7: the 4 has become a 7, still outlined" width="760" height="428" loading="lazy">
+            </div>
+            <figcaption>The same key, half a second apart. The outline marks what a hold would overwrite, so the player can see the target before committing to it.</figcaption>
+          </figure>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">03</span>Scoping 16 hours</h2>
+          <p class="body">With 16 hours, deciding what not to build was as much design as anything else.</p>
+          <ul class="facts">
+            <li><b>Cut</b> per-question time limits, wrong-answer punishment, a full menu and options, multiple music tracks, a story and ending, mobile UI</li>
+            <li><b>Kept</b> the 0.5 second hold with a visible gauge, multi-line equations, the = to 7 puzzles, three scenes, pencil-themed visuals and audio, a WebGL build</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Outcome</p>
+        <h2 class="h2">Shipped in the jam window, then finished after it</h2>
+        <p class="body">The game went up on itch.io as a playable WebGL build at the end of the jam, with three scenes: an intro where pressing 7 starts the game, a loading scene with a sliding title, and the notebook itself.</p>
+        <p class="body">The jam build was not the last one. I came back to it and released 1.0: 30 puzzles, audio levels rebalanced across the game, a cleaned-up title screen, a fix for a crash on the clear screen, pressing 7 on the ending to return to the title, and the puzzle rule stated plainly instead of left to be inferred, since players had no way of knowing that the fewest 7s is what counts.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">What I'd change</p>
+        <ul class="facts">
+          <li><b>Build for the web from day one.</b> We left the WebGL build to the end, which is where the last-minute problems were.</li>
+          <li><b>Agree on puzzle count and difficulty early.</b> Without a set curve, the puzzles were sized as we went.</li>
+          <li><b>Keep shared assets machine-independent.</b> The FMOD setup pointed at one person's local path, which made testing on other machines harder.</li>
+        </ul>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Materials</p>
+        <div class="mats">
+          <a href="https://hoseung-kwack.itch.io/the-answer-is-7" class="mat">Play on itch.io →</a>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="Case studies">
+        <a href="../index.html#work">← All work</a>
+        <a href="sisyphus.html">Next: Sisyphus's Rock →</a>
+      </nav>
+
+    </div>
+  </div>
+
+</main>
+
+<footer id="about" class="site-foot" style="margin-top: 0">
+  <svg viewBox="0 0 1280 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#0E0E0E" d="M0,60 L0,34 C90,30 150,22 230,26 C300,30 330,38 400,34 C470,30 500,18 560,20 C600,22 612,10 620,4 C626,0 634,3 634,10 C634,20 660,26 720,28 C800,30 860,24 940,27 C1010,30 1060,36 1130,32 C1190,28 1240,30 1280,33 L1280,60 Z"/></svg>
+  <div class="foot">
+    <div>
+      <h2>Let's talk</h2>
+      <p>Fourth-year Game Design at Sheridan College, Oakville. Looking for a design role starting 2027.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/hoseung-kwack/">LinkedIn</a>
+      <a href="https://hoseung-kwack.itch.io/">itch.io</a>
+      <a href="mailto:hoseungkwack@gmail.com">Email</a>
+      <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn btn-light">Resume</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

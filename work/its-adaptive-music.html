@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The track that never stops | IntoTheShadow | Hoseung Kwack</title>
+<meta name="description" content="How IntoTheShadow's adaptive music makes death cost the player their layers, not the song.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a href="../index.html" class="brand">Hoseung Kwack<span class="brand-role">Game Designer</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../index.html#work">Work</a>
+    <a href="../about.html">About</a>
+    <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn">Resume</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="wrap">
+    <div class="inner-narrow cs-head">
+      <p class="kicker"><a href="into-the-shadow.html">IntoTheShadow</a> &nbsp;·&nbsp; Audio and systems design</p>
+      <h1 class="cs-h">The track that never stops</h1>
+      <p class="cs-sub">Making death cost the player their music without restarting the song.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="cs-media">
+      <img src="../img/its-bgm-layers.jpg" alt="The FMOD session: six stems on one looping timeline, with the Stage and LeadVariant parameters called out" width="1400" height="810">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="inner-narrow">
+
+      <dl class="sum">
+        <div>
+          <dt>Problem</dt>
+          <dd>The music restarted from the top every time the player died, so the worst moment in a run always sounded the same.</dd>
+        </div>
+        <div>
+          <dt>My role</dt>
+          <dd>Composed the track, designed and built the layer system, wired it into the build.</dd>
+        </div>
+        <div>
+          <dt>What I built</dt>
+          <dd>One continuous take with four layers that open on kills and collapse on death, running in FMOD.</dd>
+        </div>
+        <div>
+          <dt>What changed</dt>
+          <dd>Dying now costs the layers you earned, not the song. The take never stops.</dd>
+        </div>
+      </dl>
+
+      <p class="meta">
+        <span><b>Role</b>Audio and systems design</span>
+        <span><b>Tools</b>FMOD Studio, Unity, REAPER</span>
+        <span><b>Team</b>5</span>
+        <span>2026–27</span>
+      </p>
+
+      <section class="sec">
+        <p class="lbl">Constraints and tradeoffs</p>
+        <h2 class="h2">I built the obvious option first, then cut it</h2>
+        <p class="body">There were two ways to go. Let the track play and never react, which is safe but tells the player nothing. Or restart it on death, which sounds responsive on paper. I built the second one.</p>
+        <p class="body">In play it was the worse of the two. The same opening arrives at the most frustrating moment in the run, over and over, and at that point the music stops being feedback and becomes a punishment for losing.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Process</p>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">01</span>Finding the technique already had a name</h2>
+          <p class="body">Metal: Hellsinger drives five instrumentation tiers off a Fury multiplier. DOOM moves between intensity levels using modular stems that share key and tempo, so parts enter and leave without a seam. Both are vertical remixing, and knowing that let me spend my time on the part specific to our game.</p>
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">02</span>Four layers on one take</h2>
+          <p class="body">Every kill opens one more layer on a take that is already playing, quantised to the beat so nothing arrives off-grid. Nothing new starts. Death drops the mix to stage one immediately, the tempo dips and climbs back, and the recording underneath never stops.</p>
+          
+        </div>
+
+        <div class="step">
+          <h2 class="h2"><span class="sn">03</span>Making stage one worse on purpose</h2>
+          <p class="body">I wrote stage one like a track, with a single drum part carrying all the energy, and on its own it sounded good. But stacking layers on a base that is already full does not make it bigger, it makes it louder, and a kill stops reading as a reward. I took energy out of stage one. On its own it got duller. That is what made the rest of the system possible.</p>
+          <figure class="fig">
+            <img src="../img/its-bgm-stages.jpg" alt="Four waveforms on the same 22.6 second loop. Stage one is sparse single drum hits; each stage below it is denser, rising from -31.7 to -13.4 dB RMS" width="1456" height="780" loading="lazy">
+            <figcaption>Stage one at the top, one drum part and little else. Each stage below is the same loop with more open. The level climbs about 18 dB from stage one to stage four, and that gap is the room a kill has to read in. <a href="https://www.youtube.com/watch?v=cnwSK6h8WIU">Hear the four stages &rarr;</a></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Outcome</p>
+        <h2 class="h2">Running in the build</h2>
+        <p class="body">The system is live in the Unity build and plays through a full combat encounter without a seam. Layers open on kill, collapse on death, and the tempo recovery reads as the run restarting rather than the song restarting.</p>
+        <p class="body">Six players tested the build in November 2026. Nobody was asked about audio, and three of them put the music in their three favourite things anyway. Two described the behaviour rather than the track, that it ramped up over time and that they liked the building music, and the third said they liked not being left in complete silence. Those are the two things the system exists to do, named by players who did not know there was a system. Nothing in the report mentions the music cutting out or restarting.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">What I'd change</p>
+        <p class="body">The reset was never a musical decision. It is this game's failure rule, written in audio. If I started again I would write stage one last, after the full stack existed, instead of writing it first and then having to take it apart.</p>
+      </section>
+
+      <section class="sec">
+        <p class="lbl">Materials</p>
+        <div class="mats">
+          <a href="https://www.youtube.com/watch?v=fnK5XM_zE0E" class="mat">Case study video &rarr;</a>
+          <a href="https://www.youtube.com/watch?v=cnwSK6h8WIU" class="mat">Hear the four stages</a>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="Case studies">
+        <a href="into-the-shadow.html">← IntoTheShadow</a>
+        <a href="cents-for-sense.html">Next: Cents for Sense →</a>
+      </nav>
+
+    </div>
+  </div>
+
+</main>
+
+<footer id="about" class="site-foot" style="margin-top: 0">
+  <svg viewBox="0 0 1280 60" preserveAspectRatio="none" aria-hidden="true"><path fill="#0E0E0E" d="M0,60 L0,34 C90,30 150,22 230,26 C300,30 330,38 400,34 C470,30 500,18 560,20 C600,22 612,10 620,4 C626,0 634,3 634,10 C634,20 660,26 720,28 C800,30 860,24 940,27 C1010,30 1060,36 1130,32 C1190,28 1240,30 1280,33 L1280,60 Z"/></svg>
+  <div class="foot">
+    <div>
+      <h2>Let's talk</h2>
+      <p>Fourth-year Game Design at Sheridan College, Oakville. Looking for a design role starting 2027.</p>
+    </div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/hoseung-kwack/">LinkedIn</a>
+      <a href="https://hoseung-kwack.itch.io/">itch.io</a>
+      <a href="mailto:hoseungkwack@gmail.com">Email</a>
+      <a href="../docs/Hoseung-Kwack-Resume.pdf" class="btn btn-light">Resume</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

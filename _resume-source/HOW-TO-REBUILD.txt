@@ -1,0 +1,21 @@
+Rebuilding Hoseung-Kwack-Resume.pdf
+===================================
+
+1. Edit resume.html. archivo.woff2 must stay next to it.
+2. Render it to PDF. Any of these works:
+
+   a) Chrome: open resume.html, Ctrl+P, Save as PDF,
+      Paper = Letter, Margins = None, Background graphics = on.
+
+   b) Playwright (exact output, same as the committed PDF):
+      npm i playwright
+      node -e "const{chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();await p.goto('file:///C:/Dev/hoseungkwack-site/_resume-source/resume.html');await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(400);await p.pdf({path:'../docs/Hoseung-Kwack-Resume.pdf',format:'Letter',printBackground:true,margin:{top:'0',right:'0',bottom:'0',left:'0'}});await b.close();})()"
+
+3. Keep the output filename Hoseung-Kwack-Resume.pdf in docs/.
+   Every Resume button on the site points at that exact path.
+
+Fitting to one page
+-------------------
+The .page block must stay at or under 1056px tall at 96dpi (= 11in).
+If it spills to two pages, shave body font-size, li margin-bottom,
+or the h2 top margin. Current settings land exactly on 1056.
